@@ -8,6 +8,7 @@ class InstrumentsController < ApplicationController
 
   # GET /instruments/1 or /instruments/1.json
   def show
+    @review = Review.new
   end
 
   # GET /instruments/new

@@ -56,6 +56,28 @@
           <td><%= @instrument.model %></td>
         </tr>
       </table>
+      <h2>Review List</h2>
+      <ul>
+        <% @instrument.review.each do |review| %>
+          <li>
+            <%= review.review %>
+            <br>
+            <small>Submitted by <%= review.user.name %></small>
+          </li>
+        <% end %>
+      </ul>
+
+      <h2>Review Form</h2>
+<%= form_with(model: @review, local: true) do |form| %>
+  <div class= "field">
+    <%= form.text_area :review %>
+    <%= form.hidden_field :instrument_id, :value => @instrument.id %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
     </div>
     </div>
     <div class="column is-3 is-offset-1">
