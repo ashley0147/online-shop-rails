@@ -36,14 +36,12 @@
           <td><%= @instrument.condition %></td>
         </tr>
         <% end %>
-
         <% if @instrument.finish %>
           <tr>
             <td class="has-text-weight-bold">Finish:</td>
             <td><%= @instrument.finish %></td>
           </tr>
         <% end %>
-
         <% if @instrument.brand %>
           <tr>
             <td class="has-text-weight-bold">Brand:</td>
@@ -56,7 +54,7 @@
           <td><%= @instrument.model %></td>
         </tr>
       </table>
-      <h2>Review List</h2>
+      <h2 class="title is-2">Review List</h2>
       <ul>
         <% @instrument.review.each do |review| %>
           <li>
@@ -67,16 +65,16 @@
         <% end %>
       </ul>
 
-      <h2>Review Form</h2>
-<%= form_with(model: @review, local: true) do |form| %>
-  <div class= "field">
-    <%= form.text_area :review %>
-    <%= form.hidden_field :instrument_id, :value => @instrument.id %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+      <h3 class="title is-2">Review Form</h3>
+      <%= form_with(model: @review, local: true) do |form| %>
+        <div class= "field">
+             <%= form.text_area :review, input_html: { class:"textarea" }, wrapper: false, label_html: { class:"label" } %>
+             <%= form.hidden_field :instrument_id, :value => @instrument.id %>
+        </div>
+        <div class="actions">
+            <%= form.submit %>
+        </div>
+      <% end %>
 
     </div>
     </div>
@@ -90,6 +88,6 @@
   </div>
 
   <% if instrument_author(@instrument) %>
-    <%= link_to 'Edit', edit_instrument_path(@instrument), class: 'button' %>
+    <%= link_to 'Edit', edit_instrument_path(@instrument), class: 'button is-warning' %>
   <% end %>
 </section>
